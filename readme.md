@@ -1,66 +1,108 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<img src="https://github.com/kkamara/useful/blob/main/php-reactjs-boilerplate.png?raw=true" alt="php-reactjs-boilerplate.png" width=""/>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img src="https://github.com/kkamara/useful/blob/main/php-reactjs-boilerplate2.png?raw=true" alt="php-reactjs-boilerplate2.png" width=""/>
 
-## About Laravel
+# PHP Filament App 2
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* [Using Thunder Client?](#thunder-client)
 
-## Learning Laravel
+* [Installation](#installation)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* [Usage](#usage)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* [API Documentation](#api-documentation)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* [Unit Tests](#unit-tests)
 
-## Laravel Sponsors
+* [Misc](#misc)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* [Contributing](#contributing)
 
-### Premium Partners
+* [License](#license)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+<a name="thunder-client"></a>
+## Using Thunder Client?
+
+[Thunder client](https://www.thunderclient.com/) Visual Studio Code extension.
+
+## Installation
+
+* [Laravel Herd](https://herd.laravel.com)
+* [https://laravel.com/docs/11.x/installation](https://laravel.com/docs/11.x/installation)
+* [https://laravel.com/docs/11.x/vite#main-content](https://laravel.com/docs/11.x/vite#main-content)
+
+```bash
+# Create our environment file.
+cp .env.example .env
+# Install our app dependencies.
+composer i
+php artisan key:generate
+# Before running the next command:
+# Update your database details in .env
+php artisan migrate --seed
+npm install
+npm run build
+```
+
+## Usage
+
+```bash
+herd link filament2
+# Website accessible at http://filament2.test
+```
+
+## API Documentation
+
+```bash
+php artisan route:list
+```
+
+## Unit Tests
+
+```bash
+php artisan test --filter=Api
+```
+
+## Misc
+
+[See PHP ReactJS Boilerplate app.](https://github.com/kkamara/php-reactjs-boilerplate)
+
+[See Python ReactJS Boilerplate app.](https://github.com/kkamara/python-reactjs-boilerplate)
+
+[See MRVL Desktop.](https://github.com/kkamara/mrvl-desktop)
+
+[See MRVL Web.](https://github.com/kkamara/mrvl-web)
+
+[See Github to Bitbucket Backup Repo Updater.](https://github.com/kkamara/ghbbupdater)
+
+[See PHP Docker Skeleton.](https://github.com/kkamara/php-docker-skeleton)
+
+[See Python Docker Skeleton.](https://github.com/kkamara/python-docker-skeleton)
+
+[See Laravel 10 API 3.](https://github.com/kkamara/laravel-10-api-3)
+
+[See movies app.](https://github.com/kkamara/movies)
+
+[See Food Nutrition Facts Search web app.](https://github.com/kkamara/food-nutrition-facts-search-web-app)
+
+[See Ecommerce Web.](https://github.com/kkamara/ecommerce-web)
+
+[See City Maps Mobile.](https://github.com/kkamara/city-maps-mobile)
+
+[See Ecommerce Mobile.](https://github.com/kkamara/ecommerce-mobile)
+
+[See CRM.](https://github.com/kkamara/crm)
+
+[See Birthday Currency.](https://github.com/kkamara/birthday-currency)
+
+[See PHP Scraper.](https://github.com/kkamara/php-scraper)
 
 ## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Please make sure to update tests as appropriate.
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[BSD](https://opensource.org/licenses/BSD-3-Clause)
