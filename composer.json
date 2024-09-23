@@ -1,6 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "kkamara/php-filament-app-2",
+    "authors": [
+        {
+            "name": "Kelvin Kamara",
+            "email": "kamaracomputers@gmail.com",
+            "homepage": "https://kelvinkamara.com"
+        }
+    ],
     "type": "project",
+    "version": "1.0.0",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
