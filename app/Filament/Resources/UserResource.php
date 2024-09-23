@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -33,7 +34,8 @@ class UserResource extends Resource
                     // database_key => shown_to_user
                     "test" => "test",
                     "youtube" => "another one",
-                ]),*/
+                ]),
+                ColorPicker::make("name"),*/
             ]);
     }
 
