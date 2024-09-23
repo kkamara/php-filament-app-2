@@ -28,7 +28,7 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make("name")->required(),
                 TextInput::make("email")->required()->email(),
-                TextInput::make("password")->password()->required(),
+                TextInput::make("password")->password()->visibleOn("create"), // also ->readonly()
                 /*Select::make("name")->options([
                     // database_key => shown_to_user
                     "test" => "test",
