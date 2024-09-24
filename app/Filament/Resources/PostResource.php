@@ -17,6 +17,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\CheckboxColumn;
+use Filament\Tables\Columns\ColorColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -25,7 +29,7 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
 
     public static function form(Form $form): Form
     {
@@ -38,7 +42,7 @@ class PostResource extends Resource
                     ->label("Category")
                     ->options(Category::all()->pluck("name", "id")),
                 ColorPicker::make("color")->required(),
-                
+
                 MarkdownEditor::make("content")->required(),
                 FileUpload::make("thumbnail")->disk("public")->directory("thumbnails"),
                 TagsInput::make("tags")->required(),
@@ -50,7 +54,13 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make("thumbnail"),
+                ColorColumn::make("color"),
+                TextColumn::make("title"),
+                TextColumn::make("slug"),
+                TextColumn::make("category.name"),
+                TextColumn::make("tags"),
+                CheckboxColumn::make("published"),
             ])
             ->filters([
                 //
