@@ -10,7 +10,9 @@ use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
@@ -35,18 +37,36 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make("title")->required(),
-                TextInput::make("slug")->required(),
+                Section::make("Create a Post")
+                    ->description("Create posts over here.")
+                    // ->aside()
+                    ->collapsible()
+                    ->schema([
+                        TextInput::make("title")->required(),
+                        TextInput::make("slug")->required(),
 
-                Select::make("category_id")
-                    ->label("Category")
-                    ->options(Category::all()->pluck("name", "id")),
-                ColorPicker::make("color")->required(),
+                        Select::make("category_id")
+                            ->label("Category")
+                            ->options(Category::all()->pluck("name", "id")),
+                        ColorPicker::make("color")->required(),
 
-                MarkdownEditor::make("content")->required(),
-                FileUpload::make("thumbnail")->disk("public")->directory("thumbnails"),
-                TagsInput::make("tags")->required(),
-                Checkbox::make("published")->required(),
+                        MarkdownEditor::make("content")->required()->columnSpan("full"), // or ->columnSpanFull()
+                    ])->columnSpan(2)->columns(2),
+                Group::make()->schema([
+                    Section::make("Image")->collapsible()->schema([
+                        FileUpload::make("thumbnail")->disk("public")->directory("thumbnails"),
+                    ])->columnSpan(span: 1),
+                    Section::make("Meta")->collapsible()->schema([
+                        TagsInput::make("tags")->required(),
+                        Checkbox::make("published")->required(),
+                    ]),
+                ]),
+            ])->columns([
+                // tailwind responsive sizes
+                "default" => 1,
+                "md" => 2,
+                "lg" => 3,
+                "xl" => 4,
             ]);
     }
 
