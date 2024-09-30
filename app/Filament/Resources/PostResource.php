@@ -42,12 +42,19 @@ class PostResource extends Resource
                     // ->aside()
                     ->collapsible()
                     ->schema([
-                        TextInput::make("title")->required(),
-                        TextInput::make("slug")->required(),
+                        TextInput::make("title")->rules("min:3|max:10")->required(), // ->rules([]) can accept an array
+                            // ->in(["test", "hello"])
+                            // ->minLength(3) for text inputs
+                            // ->maxLength(10) for text inputs
+                            // ->numeric() for numbers
+                            // ->minValue(3) for numbers
+                            // ->maxValue(10) for numbers
+                        TextInput::make("slug")->unique(ignoreRecord: true)->required(),
 
                         Select::make("category_id")
                             ->label("Category")
-                            ->options(Category::all()->pluck("name", "id")),
+                            ->options(Category::all()->pluck("name", "id"))
+                            ->required(),
                         ColorPicker::make("color")->required(),
 
                         MarkdownEditor::make("content")->required()->columnSpan("full"), // or ->columnSpanFull()
@@ -58,11 +65,11 @@ class PostResource extends Resource
                     ])->columnSpan(span: 1),
                     Section::make("Meta")->collapsible()->schema([
                         TagsInput::make("tags")->required(),
-                        Checkbox::make("published")->required(),
+                        Checkbox::make("published"),
                     ]),
                 ]),
             ])->columns([
-                // tailwind responsive sizes
+                // Tailwind responsive sizes
                 "default" => 1,
                 "md" => 2,
                 "lg" => 3,
