@@ -4,10 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Filament\Resources\PostResource\RelationManagers\AuthorsRelationManager;
 use App\Models\Category;
 use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
@@ -69,6 +71,12 @@ class PostResource extends Resource
                         TagsInput::make("tags")->required(),
                         Checkbox::make("published"),
                     ]),
+                    // Section::make("Authors")->collapsible()->schema([
+                    //     CheckboxList::make("authors")
+                    //         ->label("Co-Authors")
+                    //         ->searchable()
+                    //         ->relationship("authors", "name"),
+                    // ]),
                 ]),
             ])->columns([
                 // Tailwind responsive sizes
@@ -130,7 +138,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AuthorsRelationManager::class,
         ];
     }
 
