@@ -16,10 +16,13 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ColorColumn;
@@ -39,52 +42,39 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Section::make("Create a Post")
-                    ->description("Create posts over here.")
-                    // ->aside()
-                    ->collapsible()
-                    ->schema([
-                        TextInput::make("title")->rules("min:3|max:10")->required(), // ->rules([]) can accept an array
+                Tabs::make("Create New Post")->tabs([
+                    Tab::make("Tab 1")
+                        ->icon("heroicon-m-folder")
+                        ->iconPosition(IconPosition::After)
+                        ->badge("Hi")
+                        ->schema([
+                            TextInput::make("title")->rules("min:3|max:10")->required(), // ->rules([]) can accept an array
                             // ->in(["test", "hello"])
                             // ->minLength(3) for text inputs
                             // ->maxLength(10) for text inputs
                             // ->numeric() for numbers
                             // ->minValue(3) for numbers
                             // ->maxValue(10) for numbers
-                        TextInput::make("slug")->unique(ignoreRecord: true)->required(),
+                            TextInput::make("slug")->unique(ignoreRecord: true)->required(),
 
-                        Select::make("category_id")
-                            ->label("Category")
-                            // ->options(Category::all()->pluck("name", "id")) // old
-                            ->relationship("category", "name") // Better load select options (for large table sizes)
-                            ->searchable()
-                            ->required(),
-                        ColorPicker::make("color")->required(),
-
+                            Select::make("category_id")
+                                ->label("Category")
+                                // ->options(Category::all()->pluck("name", "id")) // old
+                                ->relationship("category", "name") // Better load select options (for large table sizes)
+                                ->searchable()
+                                ->required(),
+                            ColorPicker::make("color")->required(),
+                        ]),
+                    Tab::make("Content")->schema([
                         MarkdownEditor::make("content")->required()->columnSpan("full"), // or ->columnSpanFull()
-                    ])->columnSpan(2)->columns(2),
-                Group::make()->schema([
-                    Section::make("Image")->collapsible()->schema([
+                    ]),
+                    Tab::make("Meta")->schema([
                         FileUpload::make("thumbnail")->disk("public")->directory("thumbnails"),
-                    ])->columnSpan(span: 1),
-                    Section::make("Meta")->collapsible()->schema([
                         TagsInput::make("tags")->required(),
                         Checkbox::make("published"),
                     ]),
-                    // Section::make("Authors")->collapsible()->schema([
-                    //     CheckboxList::make("authors")
-                    //         ->label("Co-Authors")
-                    //         ->searchable()
-                    //         ->relationship("authors", "name"),
-                    // ]),
-                ]),
-            ])->columns([
-                // Tailwind responsive sizes
-                "default" => 1,
-                "md" => 2,
-                "lg" => 3,
-                "xl" => 4,
-            ]);
+                ])->columnSpanFull()->activeTab(2)->persistTabInQueryString(),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
