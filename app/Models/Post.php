@@ -44,4 +44,8 @@ class Post extends Model
             "post_user",
         )->withPivot(["order"])->withTimestamps();
     }
+
+    public function comments() {
+        return $this->morphMany(Comment::class, "commentable");
+    }
 }
