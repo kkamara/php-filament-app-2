@@ -37,8 +37,10 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make("name"),
-                TextColumn::make("slug"),
+                TextColumn::make("name")
+                    ->searchable(),
+                TextColumn::make("slug")
+                    ->searchable(),
             ])
             ->filters([
                 //
