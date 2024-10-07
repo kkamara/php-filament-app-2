@@ -36,6 +36,12 @@ class UserResource extends Resource
                     "youtube" => "another one",
                 ]),
                 ColorPicker::make("name"),*/
+                Select::make("role")->options([
+                    "ADMIN" => "ADMIN",
+                    "EDITOR" => "EDITOR",
+                    "USER" => "USER",
+                ])
+                    ->default(auth()->user()->role),
             ]);
     }
 
@@ -46,6 +52,7 @@ class UserResource extends Resource
                 TextColumn::make("id"),
                 TextColumn::make("name"),
                 TextColumn::make("email"),
+                TextColumn::make(name: "role"),
             ])
             ->filters([
                 //
