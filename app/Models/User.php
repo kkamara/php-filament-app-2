@@ -47,6 +47,28 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    const ROLE_ADMIN = "ADMIN";
+
+    const ROLE_EDITOR = "EDITOR";
+
+    const ROLE_USER = 'USER';
+
+    const ROLE_DEFAULT = self::ROLE_USER;
+
+    const ROLES = [
+        self::ROLE_ADMIN => "Admin",
+        self::ROLE_EDITOR => "Editor",
+        self::ROLE_USER => "User",
+    ];
+
+    public function isAdmin(){
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isEditor(){
+        return $this->role === self::ROLE_EDITOR;
+    }
+
     public function canAccessPanel(Panel $panel): bool {
         return $this->email === "admin@example.com";
     }
